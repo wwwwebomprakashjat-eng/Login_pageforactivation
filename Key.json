@@ -679,6 +679,13 @@
         "expirydate": "06-11-2025",
         "Allowoffline": false,
         "user": "rajesh kumar"
+    },
+        {
+        "device_id": "2c1bdf7d9257ccac",
+        "key": "35edf136d4",
+        "expirydate": "03-11-2025",
+        "Allowoffline": false,
+        "user": "murad khan"
     }
 
 ]
