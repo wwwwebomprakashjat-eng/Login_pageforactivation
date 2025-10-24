@@ -496,5 +496,12 @@
         "expirydate": "16-11-2025",
         "Allowoffline": false,
         "user": "Mahesh"
+    },
+        {
+        "device_id": "869079ea19ad04eb",
+        "key": "53f0616679",
+        "expirydate": "04-11-2025",
+        "Allowoffline": false,
+        "user": "daya shankar"
     }
 ]
