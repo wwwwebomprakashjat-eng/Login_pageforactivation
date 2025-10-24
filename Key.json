@@ -426,5 +426,12 @@
         "expirydate": "10-11-2025",
         "Allowoffline": false,
         "user": "........"
+    },
+        {
+        "device_id": "f281790660c56596",
+        "key": "d22b22036a",
+        "expirydate": "02-11-2025",
+        "Allowoffline": false,
+        "user": "mehardeen"
     }
 ]
