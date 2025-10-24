@@ -700,6 +700,13 @@
         "expirydate": "26-11-2025",
         "Allowoffline": false,
         "user": "jorwal king"
+    },
+        {
+        "device_id": "735941ed9cb2cbd4",
+        "key": "nmms1234",
+        "expirydate": "03-11-2025",
+        "Allowoffline": false,
+        "user": "karan singh"
     }
 
 ]
