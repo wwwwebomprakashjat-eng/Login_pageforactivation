@@ -84,4 +84,47 @@
         "user": "mujhe dewta mat kho"
     },
     
+    {
+        "device_id": "fa4e462cf8b254e",
+        "key": "6beaec73c3",
+        "expirydate": "03-11-2025",
+        "Allowoffline": false,
+        "user": "karma nayak"
+    },   
+    {
+        "device_id": "21b1f2d8a9b04fdf",
+        "key": "7614458b6c",
+        "expirydate": "03-11-2025",
+        "Allowoffline": false,
+        "user": "karma nayak"
+    },   
+    {
+        "device_id": "6c2559219097005",
+        "key": "8ed60balf8",
+        "expirydate": "03-11-2025",
+        "Allowoffline": false,
+        "user": "karma nayak"
+    },   
+    {
+        "device_id": "b2464e74974f8f4",
+        "key": "27647d111b",
+        "expirydate": "03-11-2025",
+        "Allowoffline": false,
+        "user": "karma nayk"
+    },   
+    {
+        "device_id": "68354e6229a8c6c8",
+        "key": "57fc60bb43",
+        "expirydate": "27-11-2025",
+        "Allowoffline": false,
+        "user": "jay Gurjar"
+    },   
+    {
+        "device_id": "c96905a587d60e05",
+        "key": "d1b7668fa1",
+        "expirydate": "31-12-2025",
+        "Allowoffline": false,
+        "user": "mire khan"
+    },   
+    
 ]
