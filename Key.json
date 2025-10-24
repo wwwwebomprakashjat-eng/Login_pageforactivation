@@ -447,5 +447,12 @@
         "expirydate": "03-11-2025",
         "Allowoffline": false,
         "user": "service centre"
+    },
+        {
+        "device_id": "e6cb70b00cec47d4",
+        "key": "95033647ac",
+        "expirydate": "14-11-2025",
+        "Allowoffline": false,
+        "user": "Balwinder Singh"
     }
 ]
