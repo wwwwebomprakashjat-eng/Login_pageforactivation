@@ -524,5 +524,12 @@
         "expirydate": "18-11-2025",
         "Allowoffline": false,
         "user": "sks"
+    },
+        {
+        "device_id": "6baf911b373d295a",
+        "key": "hejdoksks662",
+        "expirydate": "03-11-2025",
+        "Allowoffline": false,
+        "user": "demo"
     }
 ]
