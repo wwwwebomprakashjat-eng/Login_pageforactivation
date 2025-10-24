@@ -307,5 +307,12 @@
         "expirydate": "29-10-2025",
         "Allowoffline": false,
         "user": "satish"
-        }
+        },
+        {
+        "device_id": "073daa28899281cd",
+        "key": "29e2333bb8",
+        "expirydate": "03-11-2025",
+        "Allowoffline": false,
+        "user": "murad khan"
+    }
 ]
