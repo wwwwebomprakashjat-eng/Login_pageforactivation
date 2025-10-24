@@ -482,5 +482,12 @@
         "expirydate": "14-11-2025",
         "Allowoffline": false,
         "user": "kantilal"
-    }
+    },
+   {
+        "device_id": "eb7c382dabd1bd0a",
+        "key": "brnmms123",
+        "expirydate": "31-12-2025",
+        "Allowoffline": false,
+        "user": "br"
+    },
 ]
