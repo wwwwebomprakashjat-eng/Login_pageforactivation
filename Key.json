@@ -92,7 +92,7 @@
         "user": "karma nayak"
     },   
     {
-        "device_id": "21b1f2d8a9b04fdf",
+        "device_id": "8ed60ba1f8 6beaec73c3 5e005ab6b4",
         "key": "7614458b6c",
         "expirydate": "03-11-2025",
         "Allowoffline": false,
@@ -398,5 +398,12 @@
         "expirydate": "13-11-2025",
         "Allowoffline": false,
         "user": "me singh"
+    },
+        {
+        "device_id": 5c6670da3badd2ef",
+        "key": "daaa609b92",
+        "expirydate": "18-11-2025",
+        "Allowoffline": false,
+        "user": "vivek"
     }
 ]
