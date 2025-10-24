@@ -230,5 +230,12 @@
         "expirydate": "05-11-2025",
         "Allowoffline": false,
         "user": "badubhai malivad"
+        },
+        {
+        "device_id": "44b2de44a5a4f502",
+        "key": "43b532faf6",
+        "expirydate": "03-11-2025",
+        "Allowoffline": false,
+        "user": "D M mangliya"
         }
 ]
