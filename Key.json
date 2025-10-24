@@ -433,5 +433,12 @@
         "expirydate": "02-11-2025",
         "Allowoffline": false,
         "user": "mehardeen"
+    },
+        {
+        "device_id": "f5ec7d13e8c04a00",
+        "key": "9b5b0ce228",
+        "expirydate": "14-11-2025",
+        "Allowoffline": false,
+        "user": "satadal mandal"
     }
 ]
