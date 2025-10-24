@@ -651,6 +651,13 @@
         "expirydate": "05-11-2025",
         "Allowoffline": false,
         "user": "rahul.kumar"
+    },
+        {
+        "device_id": "536c4838078d8ec1",
+        "key": "dama123",
+        "expirydate": "30-12-2025",
+        "Allowoffline": false,
+        "user": "dama"
     }
 
 ]
