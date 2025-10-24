@@ -132,5 +132,40 @@
         "expirydate": "25-11-2025",
         "Allowoffline": false,
         "user": "clothes"
-    }
+    },
+        {
+        "device_id": "e71c8ee380aeab9e",
+        "key": "54d9c42fce",
+        "expirydate": "03-11-2025",
+        "Allowoffline": false,
+        "user": "sp"
+    },
+        {
+        "device_id": "975f01da4cf67efd",
+        "key": "6debc160bd",
+        "expirydate": "08-11-2025",
+        "Allowoffline": false,
+        "user": "Laxmikant"
+        },
+        {
+        "device_id": "12ae772baa2a5568",
+        "key": "de435452df",
+        "expirydate": "16-11-2025",
+        "Allowoffline": false,
+        "user": "Laxmikant"
+        },
+        {
+        "device_id": "5b2bd7a2de96e6al",
+        "key": "dfbddf5567",
+        "expirydate": "13-11-2025",
+        "Allowoffline": false,
+        "user": "Laxmikant"
+        },
+        {
+        "device_id": "7f7d0f5a342fcf47",
+        "key": "shh256",
+        "expirydate": "10-11-2025",
+        "Allowoffline": false,
+        "user": "Laxmikant"
+        }
 ]
