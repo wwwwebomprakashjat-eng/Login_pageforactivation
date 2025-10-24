@@ -510,5 +510,12 @@
         "expirydate": "08-11-2025",
         "Allowoffline": false,
         "user": "ajay"
+    },
+        {
+        "device_id": "ca969a2498fba087",
+        "key": "4767e26426",
+        "expirydate": "27-10-2025",
+        "Allowoffline": false,
+        "user": "vivek singh"
     }
 ]
