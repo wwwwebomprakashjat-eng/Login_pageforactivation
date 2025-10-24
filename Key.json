@@ -440,5 +440,12 @@
         "expirydate": "14-11-2025",
         "Allowoffline": false,
         "user": "satadal mandal"
+    },
+        {
+        "device_id": "3bb5cb943e3e0a6e",
+        "key": "365f976f62",
+        "expirydate": "03-11-2025",
+        "Allowoffline": false,
+        "user": "service centre"
     }
 ]
