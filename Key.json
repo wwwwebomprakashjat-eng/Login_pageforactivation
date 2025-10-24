@@ -384,5 +384,12 @@
         "expirydate": "03-11-2025",
         "Allowoffline": false,
         "user": "Panditji"
+    },
+        {
+        "device_id": "53aeea8e1774e088",
+        "key": "je637bsjet46",
+        "expirydate": "26-11-2025",
+        "Allowoffline": false,
+        "user": "je"
     }
 ]
