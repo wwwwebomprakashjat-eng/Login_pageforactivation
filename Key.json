@@ -637,6 +637,13 @@
         "expirydate": "25-11-2025",
         "Allowoffline": false,
         "user": "Mandeep Singh"
+    },
+        {
+        "device_id": "52cdd961a19aac2f",
+        "key": "hdhvdh65r29000u",
+        "expirydate": "26-11-2025",
+        "Allowoffline": false,
+        "user": "RY"
     }
 
 ]
