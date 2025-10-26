@@ -49,6 +49,13 @@
         "user": "pawan maurya"
     },
         {
+        "device_id": "1d539384e8aabe7b",
+        "key": "5ksbs666wn7",
+        "expirydate": "12-11-2025",
+        "Allowoffline": false,
+        "user": "satish"
+    },
+        {
         "device_id": "85ec06d3bbe01d7e",
         "key": "jeudv66281nn",
         "expirydate": "16-11-2025",
@@ -58,7 +65,7 @@
         {
         "device_id": "57aa5590502387bc",
         "key": "3cd1d7faf9",
-        "expirydate": "30-11-2025",
+        "expirydate": "30-10-2025",
         "Allowoffline": false,
         "user": "satish"
     },
