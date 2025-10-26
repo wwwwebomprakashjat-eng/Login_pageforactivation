@@ -42,6 +42,62 @@
         "user": "Satish"
     },
         {
+        "device_id": "57aa5590502387bc",
+        "key": "3cd1d7faf9",
+        "expirydate": "30-11-2025",
+        "Allowoffline": false,
+        "user": "satish"
+    },
+{
+        "device_id": "a6dcc6652ef73e4e",
+        "key": "2bb8306066",
+        "expirydate": "29-10-2025",
+        "Allowoffline": false,
+        "user": "satish"
+    },   
+      {
+        "device_id": "f4f051f2d7ce8ac3",
+        "key": "54d9c42fce",
+        "expirydate": "29-10-2025",
+        "Allowoffline": false,
+        "user": "satish"
+      },
+       {
+        "device_id": "ba94ca25164bad7e",
+        "key": "f25979c35f",
+        "expirydate": "30-10-2025",
+        "Allowoffline": false,
+        "user": "satish"
+    },
+        {
+        "device_id": "6473016498a02105",
+        "key": "7af2f0a94d",
+        "expirydate": "31-10-2025",
+        "Allowoffline": false,
+        "user": "satish"
+    },
+        {
+        "device_id": "4dbe46628164e249",
+        "key": "8f40620b4d",
+        "expirydate": "01-11-2025",
+        "Allowoffline": false,
+        "user": "satish"
+    },
+        {
+        "device_id": "9c4a02b59ec228ae",
+        "key": "523784f5c4",
+        "expirydate": "08-11-2025",
+        "Allowoffline": false,
+        "user": "satish"
+    },
+ {
+        "device_id": "d4f9c50b3a878ca5",
+        "key": "1gdg56wnfr6",
+        "expirydate": "11-11-2025",
+        "Allowoffline": false,
+        "user": "satish"
+    },
+  {
         "device_id": "6e786f05db2059ee",
         "key": "b5f339oj86ed",
         "expirydate": "13-11-2025",
@@ -104,13 +160,6 @@
         "expirydate": "03-11-2025",
         "Allowoffline": false,
         "user": "ravindra singh"
-    },   
-    {
-        "device_id": "a6dcc6652ef73e4e",
-        "key": "2bb8306066",
-        "expirydate": "29-10-2025",
-        "Allowoffline": false,
-        "user": "satish"
     },   
     {
         "device_id": "d07ba1db0cbfd569",
@@ -343,13 +392,7 @@
         "Allowoffline": false,
         "user": "raaz meena"
     },
-        {
-        "device_id": "f4f051f2d7ce8ac3",
-        "key": "54d9c42fce",
-        "expirydate": "29-10-2025",
-        "Allowoffline": false,
-        "user": "satish"
-        },
+       
         {
         "device_id": "853bdf2076394270",
         "key": "29e2333bb8",
@@ -364,34 +407,7 @@
         "Allowoffline": false,
         "user": "Dinesh Meena"
     },
-        {
-        "device_id": "ba94ca25164bad7e",
-        "key": "f25979c35f",
-        "expirydate": "30-10-2025",
-        "Allowoffline": false,
-        "user": "satish"
-    },
-        {
-        "device_id": "6473016498a02105",
-        "key": "7af2f0a94d",
-        "expirydate": "31-10-2025",
-        "Allowoffline": false,
-        "user": "satish"
-    },
-        {
-        "device_id": "4dbe46628164e249",
-        "key": "8f40620b4d",
-        "expirydate": "01-11-2025",
-        "Allowoffline": false,
-        "user": "satish"
-    },
-        {
-        "device_id": "9c4a02b59ec228ae",
-        "key": "523784f5c4",
-        "expirydate": "08-11-2025",
-        "Allowoffline": false,
-        "user": "satish"
-    },
+     
         {
         "device_id": "da0570b3445308b4",
         "key": "c3d0957b87",
@@ -406,13 +422,7 @@
         "Allowoffline": false,
         "user": "15739660540"
     },
-        {
-        "device_id": "d4f9c50b3a878ca5",
-        "key": "1gdg56wnfr6",
-        "expirydate": "11-11-2025",
-        "Allowoffline": false,
-        "user": "satish"
-    },
+        
         {
         "device_id": "63080ad09c629c5e",
         "key": "4e5ca70e56",
