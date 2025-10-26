@@ -332,7 +332,7 @@
         {
         "device_id": "28c481b4a62805a7",
         "key": "a5b2c02d5a",
-        "expirydate": "26-10-2025",
+        "expirydate": "03-10-2025",
         "Allowoffline": false,
         "user": "burndaban"
         },
@@ -446,6 +446,13 @@
     },
         {
         "device_id": "0e931f965261bed9",
+        "key": "91cc2d23d0",
+        "expirydate": "13-11-2025",
+        "Allowoffline": false,
+        "user": "mr singh"
+    },
+{
+        "device_id": "a50c97730e1834c4",
         "key": "91cc2d23d0",
         "expirydate": "13-11-2025",
         "Allowoffline": false,
