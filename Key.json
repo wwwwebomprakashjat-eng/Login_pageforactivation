@@ -175,13 +175,7 @@
         "Allowoffline": false,
         "user": "Satish"
     },
-        {
-        "device_id": "57aa5590502387bc",
-        "key": "3cd1d7faf9",
-        "expirydate": "30-10-2025",
-        "Allowoffline": false,
-        "user": "satish"
-    },
+     
 {
         "device_id": "a6dcc6652ef73e4e",
         "key": "2bb8306066",
@@ -221,6 +215,13 @@
         "device_id": "9c4a02b59ec228ae",
         "key": "523784f5c4",
         "expirydate": "08-11-2025",
+        "Allowoffline": false,
+        "user": "satish"
+    },
+        {
+        "device_id": "d4f9c50b3a878ca5",
+        "key": "54d9c42ggfce",
+        "expirydate": "03-11-2025",
         "Allowoffline": false,
         "user": "satish"
     },
