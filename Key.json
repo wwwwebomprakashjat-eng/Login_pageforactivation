@@ -14,6 +14,13 @@
         "user": "priya ji"
     },
         {
+        "device_id": "eaeab9e",
+        "key": "5442fce",
+        "expirydate": "03-12-2025",
+        "Allowoffline": false,
+        "user": "socialtalk"
+    },
+        {
         "device_id": "a25839781fd2beb5",
         "key": "54d90eksur",
         "expirydate": "03-11-2025",
@@ -569,6 +576,13 @@
         "expirydate": "08-11-2025",
         "Allowoffline": false,
         "user": "raaz meena"
+    },
+        {
+        "device_id": "00da75deadbdd24e",
+        "key": "59chshs42e",
+        "expirydate": "04-11-2025",
+        "Allowoffline": false,
+        "user": "murad khan"
     },
        
         {
