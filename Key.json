@@ -105,6 +105,13 @@
         "user": "Ganesh St"
     },
         {
+        "device_id": "9010d946e9f3a8a9",
+        "key": "540akeufce",
+        "expirydate": "03-12-2025",
+        "Allowoffline": false,
+        "user": "Himalaya user"
+    },
+        {
         "device_id": "a657c660de525f61",
         "key": "54d9cce",
         "expirydate": "30-12-2025",
