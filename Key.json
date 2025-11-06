@@ -583,15 +583,15 @@
         "expirydate": "03-12-2025",
         "Allowoffline": false,
         "user": "sultan mirza"
-    },,
-        {
+    },
+       {
         "device_id": "4dcb28548927eeae",
         "key": "5lkfaaqz%e",
         "expirydate": "22-11-2025",
         "Allowoffline": false,
         "user": "sultan mirza"
     }
-        {
+       , {
         "device_id": "6da4fb9fccefe1a0",
         "key": "fca7c5c6ee",
         "expirydate": "03-11-2025",
