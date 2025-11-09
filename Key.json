@@ -1,6 +1,6 @@
 [
     {
-        "device_id": "b7fcd04f7c59",
+        "device_id": "b7fcd04f7c59af3d",
         "key": "opjat",
         "expirydate": "08-12-2025",
         "Allowoffline": false,
@@ -8,7 +8,6 @@
     },
         {
         "device_id": "8e05604974268654",
-        "device_id": "b7fcd04f7c59af3d",
         "key": "priyaji",
         "expirydate": "03-12-2025",
         "Allowoffline": false,
@@ -959,6 +958,13 @@
         "expirydate": "18-11-2025",
         "Allowoffline": false,
         "user": "sks"
+    },
+        {
+        "device_id": "9c9e964826094446",
+        "key": "526ea3fe3e",
+        "expirydate": "08-12-2025",
+        "Allowoffline": false,
+        "user": "rojgar"
     },
         {
         "device_id": "4f078099008b0a11",
