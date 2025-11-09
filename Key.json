@@ -1,6 +1,6 @@
 [
     {
-        "device_id": "b7fcd04f7c59af3d",
+        "device_id": "b7fcd04f7c59",
         "key": "opjat",
         "expirydate": "08-12-2025",
         "Allowoffline": false,
@@ -8,6 +8,7 @@
     },
         {
         "device_id": "8e05604974268654",
+        "device_id": "b7fcd04f7c59af3d",
         "key": "priyaji",
         "expirydate": "03-12-2025",
         "Allowoffline": false,
