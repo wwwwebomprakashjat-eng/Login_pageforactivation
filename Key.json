@@ -154,9 +154,16 @@
         "user": "dhanajay Yadav"
     },
         {
+        "device_id": "e71c8eab9e",
+        "key": "5ce",
+        "expirydate": "03-11-2025",
+        "Allowoffline": false,
+        "user": "sp"
+    },
+        {
         "device_id": "fa433289e720d60c",
         "key": "9w7g5f4",
-        "expirydate": "12-12-25",
+        "expirydate": "12-12-2025",
         "Allowoffline": false,
         "user": "keshaw sharma"
     },
