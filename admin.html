@@ -69,22 +69,18 @@ function githubLogin(){
 
         document.getElementById("status").innerText = "Exchanging token…";
 
-        const res = await fetch(
-          "https://github-cors-proxy.omniapp.dev/https://github.com/login/oauth/access_token",
-          {
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json",
-                "Accept":"application/json"
-            },
-            body:JSON.stringify({
-                client_id:CLIENT_ID,
-                client_secret:CLIENT_SECRET,
-                code:code
-            })
-          }
-        );
-
+      const res = await fetch("https://corsproxy.io/?https://github.com/login/oauth/access_token", {
+    method:"POST",
+    headers:{
+        "Content-Type":"application/json",
+        "Accept":"application/json"
+    },
+    body:JSON.stringify({
+        client_id:CLIENT_ID,
+        client_secret:CLIENT_SECRET,
+        code:code
+    })
+});
         const data = await res.json();
 
         if(data.access_token){
