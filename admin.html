@@ -2,114 +2,178 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Key.json Admin Panel (GitHub Without Backend)</title>
+<title>Key.json Admin Panel (Improved)</title>
 <style>
-body{font-family:Arial;margin:20px;max-width:800px}
-textarea{width:100%;height:400px;font-family:monospace}
-button{padding:10px;margin:5px}
-#panel{display:none}
+body{font-family:Arial;margin:20px;max-width:900px}
+fieldset{border:1px solid #ddd;padding:12px;border-radius:6px}
+label{display:block;margin:8px 0 4px}
+input[type="text"]{width:100%;padding:8px;border-radius:6px;border:1px solid #ccc}
+textarea{width:100%;height:360px;font-family:monospace;margin-top:8px}
+button{padding:10px 14px;border-radius:6px;border:1px solid #bbb;background:#f7f7f7;cursor:pointer}
+#panel{display:none;margin-top:12px}
+#status{margin-bottom:10px}
+#result{background:#f6f6f6;padding:10px;border-radius:6px;margin-top:8px;white-space:pre-wrap}
 </style>
 </head>
 <body>
-
 <h2>Key.json Admin Panel</h2>
 <p id="status">Checking admin…</p>
 
-<div id="panel">
-  <button onclick="loadFile()">Load Key.json</button>
-  <button onclick="saveFile()">Save</button>
+<fieldset id="loginBox">
+  <label for="email">Enter admin email (only admin allowed):</label>
+  <input id="email" type="text" placeholder="your-admin-email@gmail.com" />
+  <div style="margin-top:8px">
+    <button id="verifyBtn">Verify Email</button>
+    <button id="openGithubAuth" style="margin-left:8px">Sign in to GitHub (for edits)</button>
+  </div>
+  <small style="display:block;margin-top:8px;color:#666">Use your admin email: <strong>www.webomprakashjat@gmail.com</strong></small>
+</fieldset>
 
-  <br><input id="commit" placeholder="Commit message" style="width:100%;margin:10px 0">
+<div id="panel">
+  <div style="margin-bottom:8px">
+    <button onclick="loadFile()">Load Key.json</button>
+    <button onclick="saveFile()">Save</button>
+  </div>
+  <input id="commit" placeholder="Commit message" style="width:100%;margin:10px 0;padding:8px;border-radius:6px;border:1px solid #ccc">
   <textarea id="editor">{}</textarea>
-  <pre id="result"></pre>
+  <div id="result"></div>
 </div>
 
 <script>
-// FIXED ADMIN EMAIL (ONLY YOU)
-const ADMIN_EMAIL = "www.webomprakashjat@gmail.com";
-
-// YOUR GITHUB APP INFO (must replace)
-const CLIENT_ID = "Ov23liByBWpEww6qNnPy";       // <-- replace
-const CLIENT_SECRET = "5bc3de72f78ef75aae85ec38057d2257f8b8a29b"; // <-- replace
-
+/* ===== CONFIG — replace CLIENT_ID / SECRET if you will later ===== */
+const ADMIN_EMAIL = "wwwwebomprakashjat@gmail.com";
+const CLIENT_ID = "Ov23liByBWpEww6qNnPy";       // your client id (already in file)
+const CLIENT_SECRET = "5bc3de72f78ef75aae85ec38057d2257f8b8a29b"; // your secret (present now — consider removing later)
 const OWNER = "wwwwebomprakashjat-eng";
 const REPO = "Login_pageforactivation";
 const FILE = "Key.json";
 
 let accessToken = null;
+let fileSha = null;
 
-// Step 1: Simple email check (no Google login)
-function adminCheck(){
-    let mail = prompt("Enter admin email:");
-    if(mail !== ADMIN_EMAIL){
-        alert("❌ Not authorized");
-        window.location = "https://google.com";
-    } else {
-        document.getElementById("panel").style.display = "block";
-        document.getElementById("status").innerText = "Admin verified";
-    }
-}
-adminCheck();
+/* ===== UI elements ===== */
+const statusEl = document.getElementById('status');
+const loginBox = document.getElementById('loginBox');
+const panel = document.getElementById('panel');
+const emailInput = document.getElementById('email');
+const verifyBtn = document.getElementById('verifyBtn');
+const githubBtn = document.getElementById('openGithubAuth');
 
-// Step 2: GitHub OAuth Login
-async function githubLogin(){
-    const url = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=repo`;
-    window.location.href = url;
-}
+/* ===== Handlers ===== */
+verifyBtn.onclick = () => {
+  const v = (emailInput.value || '').trim();
+  if(v === ADMIN_EMAIL){
+    statusEl.innerText = 'Admin verified: ' + v;
+    loginBox.style.display = 'none';
+    panel.style.display = 'block';
+  } else {
+    alert('Not authorized. Enter the admin email exactly.');
+  }
+};
 
-// Step 3: Exchange code for access token
-if(window.location.search.includes("code=")){
-    const code = new URLSearchParams(window.location.search).get("code");
+/* GitHub OAuth start (redirect to GitHub auth) */
+githubBtn.onclick = () => {
+  // this will redirect user to GitHub to grant permission; after authorizing GitHub will redirect back with ?code=...
+  const url = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=repo`;
+  window.location.href = url;
+};
 
-    const res = await fetch("https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token", {
-        method:"POST",
+/* If GitHub redirected back with ?code=, exchange it (note: using CORS proxy) */
+(async function checkForCode(){
+  const params = new URLSearchParams(window.location.search);
+  if(params.has('code')){
+    const code = params.get('code');
+    statusEl.innerText = 'Exchanging GitHub code for token...';
+    try{
+      /* NOTE: Using cors-anywhere proxy — may require enabling. If that fails, see troubleshooting below. */
+      const resp = await fetch("https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token", {
+        method:'POST',
         headers:{ "Content-Type":"application/json", "Accept":"application/json" },
-        body: JSON.stringify({
-            client_id: CLIENT_ID,
-            client_secret: CLIENT_SECRET,
-            code: code
-        })
-    });
+        body: JSON.stringify({ client_id: CLIENT_ID, client_secret: CLIENT_SECRET, code })
+      });
+      const data = await resp.json();
+      if(data.access_token){
+        accessToken = data.access_token;
+        statusEl.innerText = 'GitHub Login OK — ready to edit';
+        // remove code param from URL for cleanliness
+        history.replaceState({}, document.title, location.pathname);
+      } else {
+        statusEl.innerText = 'GitHub token exchange failed: ' + JSON.stringify(data);
+      }
+    } catch(err){
+      statusEl.innerText = 'Token exchange error: ' + err.message;
+      console.error(err);
+    }
+  }
+})();
 
-    const data = await res.json();
-    accessToken = data.access_token;
-    document.getElementById("status").innerText = "GitHub Login Successful";
-}
-
-// Step 4: Load Key.json
+/* Load file */
 async function loadFile(){
-    if(!accessToken) return githubLogin();
-
-    const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE}`, {
-        headers:{ Authorization:"token " + accessToken }
+  if(!accessToken){
+    alert('Please sign in to GitHub first (Sign in to GitHub button).');
+    return;
+  }
+  statusEl.innerText = 'Loading Key.json...';
+  try{
+    const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE}`, {
+      headers: { Authorization: 'token ' + accessToken, Accept: 'application/vnd.github.v3+json' }
     });
-
-    const j = await res.json();
-    const content = atob(j.content);
-    document.getElementById("editor").value = JSON.stringify(JSON.parse(content), null, 2);
-    window.fileSha = j.sha;
+    const j = await r.json();
+    if(j.content){
+      const txt = atob(j.content.replace(/\n/g,'')); // decode base64
+      document.getElementById('editor').value = JSON.stringify(JSON.parse(txt), null, 2);
+      fileSha = j.sha;
+      statusEl.innerText = 'Loaded file (sha:' + fileSha + ')';
+      document.getElementById('result').innerText = '';
+    } else {
+      document.getElementById('result').innerText = JSON.stringify(j, null, 2);
+    }
+  } catch(err){
+    statusEl.innerText = 'Load error: ' + err.message;
+    console.error(err);
+  }
 }
 
-// Step 5: Save/Update Key.json
+/* Save file */
 async function saveFile(){
-    if(!accessToken) return githubLogin();
-
-    const content = document.getElementById("editor").value;
-    const msg = document.getElementById("commit").value || "Update Key.json";
-
+  if(!accessToken){
+    alert('Please sign in to GitHub first (Sign in to GitHub button).');
+    return;
+  }
+  let content = document.getElementById('editor').value;
+  try{
+    const parsed = JSON.parse(content); // validate JSON
+    const base64 = btoa(JSON.stringify(parsed, null, 2));
+    const message = document.getElementById('commit').value || 'Update Key.json';
+    statusEl.innerText = 'Saving...';
     const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE}`, {
-        method:"PUT",
-        headers:{ Authorization:"token " + accessToken },
-        body: JSON.stringify({
-            message: msg,
-            content: btoa(content),
-            sha: window.fileSha
-        })
+      method:'PUT',
+      headers:{ Authorization: 'token ' + accessToken, "Content-Type":"application/json" },
+      body: JSON.stringify({ message, content: base64, sha: fileSha })
     });
-
     const j = await res.json();
-    document.getElementById("result").innerText = JSON.stringify(j, null, 2);
+    if(j.commit){
+      statusEl.innerText = 'Saved — commit: ' + j.commit.html_url;
+      document.getElementById('result').innerText = 'Saved OK: ' + j.commit.html_url;
+    } else {
+      statusEl.innerText = 'Save response: see result';
+      document.getElementById('result').innerText = JSON.stringify(j, null, 2);
+    }
+  }catch(err){
+    alert('JSON parse error or save error: ' + err.message);
+    console.error(err);
+  }
 }
+
+/* ===== Troubleshooting hints for you (if something goes wrong) =====
+1) If the "Sign in to GitHub" redirect returns back but token exchange fails:
+   - cors-anywhere.herokuapp.com is a public proxy and may be down.
+   - Alternative: temporarily use another CORS proxy or set up your own tiny server to exchange code securely.
+2) If prompt/input doesn't appear: use this visible login form (we added it).
+3) If you see JS errors: open DevTools -> Console and paste the error here.
+4) After successful GitHub login, reload page to see 'GitHub Login OK' or call Load Key.json.
+*/
+
 </script>
 </body>
 </html>
