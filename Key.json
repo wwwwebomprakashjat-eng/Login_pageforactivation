@@ -14,6 +14,13 @@
         "user": "priya ji"
     },
         {
+        "device_id": "8aa1400691fba32f",
+        "key": "54g5e4fce",
+        "expirydate": "03-11-2025",
+        "Allowoffline": false,
+        "user": "DK"
+    },
+        {
         "device_id": "0620aa287b466103",
         "key": "54djjddh0",
         "expirydate": "16-11-2025",
@@ -930,7 +937,7 @@
         {
         "device_id": "0ef91a471d20c44f",
         "key": "d382f474e2",
-        "expirydate": "15-11-2025",
+        "expirydate": "15-12-2025",
         "Allowoffline": false,
         "user": "raaz meena"
     },
