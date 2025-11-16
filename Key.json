@@ -156,7 +156,7 @@
         {
         "device_id": "1a79a435c8451e6e",
         "key": "54dkdnd",
-        "expirydate": "10-11-2025",
+        "expirydate": "10-11-25",
         "Allowoffline": false,
         "user": "pawan maurya Samsung"
     },
@@ -467,6 +467,13 @@
         "expirydate": "21-11-2025",
         "Allowoffline": false,
         "user": "monuji jagdish"
+    },
+        {
+        "device_id": "c771bcf6a20f0f8e",
+        "key": "5wn6vtce",
+        "expirydate": "02-12-2025",
+        "Allowoffline": false,
+        "user": "pawan maurya"
     },
         {
         "device_id": "1cff120010f4211b",
