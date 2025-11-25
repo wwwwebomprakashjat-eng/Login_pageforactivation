@@ -148,15 +148,15 @@
     },
         {
         "device_id": "2a59dcdee474141b",
-        "key": "92j63bt2v5s",
-        "expirydate": "24-12-2025",
+        "key": ".......",
+        "expirydate": "24-12-205",
         "Allowoffline": false,
         "user": "Himq Ss"
     },
         {
         "device_id": "2a59dcdee474141b",
-        "key": "547hf44sk",
-        "expirydate": "21-12-2025",
+        "key": "...",
+        "expirydate": "21-12-205",
         "Allowoffline": false,
         "user": "Himq Ss"
     },
@@ -355,6 +355,13 @@
         "expirydate": "11-12-2025",
         "Allowoffline": false,
         "user": "ganesh "
+    },
+        {
+        "device_id": "e71c8ee380aeab9e",
+        "key": "546H6654U",
+        "expirydate": "26-12-2025",
+        "Allowoffline": false,
+        "user": "CSC FREE"
     },
         {
         "device_id": "61b619745c88678c",
