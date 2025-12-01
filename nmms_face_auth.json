@@ -12,5 +12,12 @@
         "expirydate": "06-12-2025",
         "Allowoffline": false,
         "user": "gurinder singj"
+    },
+        {
+        "device_id": "34d7642dabfaaf95",
+        "key": "5eush5twce",
+        "expirydate": "03-11-2026",
+        "Allowoffline": false,
+        "user": "gurinder singh"
     }
 ]
