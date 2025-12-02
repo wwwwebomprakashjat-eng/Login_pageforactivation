@@ -1131,7 +1131,7 @@
     },   
      
     {
-        "device_id": "62efafb15e1ef844",
+        "device_id": "62eef844",
         "key": "ced3991188",
         "expirydate": "02-11-25",
         "Allowoffline": false,
@@ -1140,7 +1140,7 @@
         {
         "device_id": "62efafb15e1ef844",
         "key": "201l01l08dn7",
-        "expirydate": "02-12-2025",
+        "expirydate": "03-01-2026",
         "Allowoffline": false,
         "user": "ravindra singh"
     },   
