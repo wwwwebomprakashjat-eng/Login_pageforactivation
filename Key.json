@@ -1239,6 +1239,13 @@
         "user": "Ganesh St"
     },
         {
+        "device_id": "d40380803144b0f5",
+        "key": "8n8776o0m8",
+        "expirydate": "12-01-2026",
+        "Allowoffline": false,
+        "user": "Himalaya user"
+    },
+        {
         "device_id": "035a8f61d3a266e6",
         "key": "92k8ej47",
         "expirydate": "15-12-2025",
@@ -1276,7 +1283,7 @@
         {
         "device_id": "f8737cdf48936f61",
         "key": "540101019nnb",
-        "expirydate": "01-01-2026",
+        "expirydate": "01-01-2'026",
         "Allowoffline": false,
         "user": "Rishabh jain"
     },
