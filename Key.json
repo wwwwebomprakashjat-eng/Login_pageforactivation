@@ -735,9 +735,16 @@
         "user": "Vishal Singh"
     },
         {
+        "device_id": "d55306f1319c481d",
+        "key": "54748yb68",
+        "expirydate": "01-01-2026",
+        "Allowoffline": false,
+        "user": "rohit"
+    },
+        {
         "device_id": "5abea3f5b9b77ada",
         "key": "54d9c7eb635e",
-        "expirydate": "31-12-2025",
+        "expirydate": "01-01-2026",
         "Allowoffline": false,
         "user": "rohit"
     },
