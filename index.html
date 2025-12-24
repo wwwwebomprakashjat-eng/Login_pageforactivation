@@ -176,7 +176,7 @@
       font-size: 0.85em;
       margin-left: 10px;
     }
-    
+
     /* Modal Styles */
     .modal {
       display: none;
@@ -240,7 +240,7 @@
         opacity: 1;
       }
     }
-    
+
     @media (max-width: 768px) {
       header { flex-direction: column; text-align: center; }
       input, select { width: 100%; margin: 8px 0; }
@@ -311,8 +311,7 @@
     import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 
     const firebaseConfig = {
-      
-  apiKey: "AIzaSyDi5XSeoOo90LQGDHSLbUk3NjAVc7Fw2zI",
+      apiKey: "AIzaSyDi5XSeoOo90LQGDHSLbUk3NjAVc7Fw2zI",
   authDomain: "try-jfyxr-guy.firebaseapp.com",
   databaseURL: "https://try-jfyxr-guy-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "try-jfyxr-guy",
@@ -329,7 +328,8 @@
     // Multiple admin emails allowed
     const ADMIN_EMAILS = [
       "www.webomprakashjat@gmail.com",
-      "rambirma248@gmail.com"
+      "rambirma248@gmail.com",
+      "choudharydimpaljat@gmail.com"
     ];
 
     let currentUpdateId = null;
@@ -361,7 +361,7 @@
         if (!ADMIN_EMAILS.includes(user.email)) {
           // Show modal instead of alert
           accessDeniedModal.style.display = "block";
-          
+
           // Sign out the unauthorized user
           await signOut(auth);
           return;
