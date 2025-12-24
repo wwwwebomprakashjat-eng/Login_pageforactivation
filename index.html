@@ -1,156 +1,626 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Key.json Admin Panel (FINAL FIX)</title>
-<style>
-body{font-family:Arial;margin:20px;max-width:900px}
-textarea{width:100%;height:400px;font-family:monospace}
-input,button{padding:10px;margin:5px}
-#panel{display:none}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🔥 NMMS Admin Panel</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a, #1f1f1f);
+      color: #f5f5f5;
+      margin: 0; padding: 0;
+      min-height: 100vh;
+    }
+    header {
+      background: #111;
+      padding: 15px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #333;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+    header h1 {
+      margin: 0;
+      color: #ffc107;
+      font-size: 1.5em;
+    }
+    .admin-info {
+      font-size: 0.9em;
+      color: #ddd;
+    }
+    .admin-info span {
+      color: #ffc107;
+    }
+    .logout-btn {
+      background: #e53935;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    main {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+    .card {
+      background: #1e1e1e;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      margin-bottom: 25px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(255,255,255,0.08);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #ffc107;
+    }
+    input, button, select {
+      padding: 10px;
+      margin: 8px 6px;
+      border-radius: 8px;
+      border: none;
+      font-size: 15px;
+      transition: all 0.2s ease;
+    }
+    input, select {
+      background: #2d2d2d;
+      color: #fff;
+      border: 1px solid #444;
+      outline: none;
+    }
+    input {
+      width: calc(25% - 12px);
+    }
+    select {
+      width: calc(20% - 12px);
+      cursor: pointer;
+    }
+    input:focus, select:focus {
+      background: #333;
+      border-color: #ffc107;
+      box-shadow: 0 0 8px #ffc10755;
+    }
+    input::placeholder {
+      color: #aaa;
+    }
+    button {
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    button#loginBtn {
+      background: #ffc107;
+      color: #111;
+      padding: 12px 18px;
+      font-size: 1em;
+    }
+    button.save { background: #007bff; color: #fff; }
+    button.update { background: #43a047; color: #fff; }
+    button.danger { background: #e53935; color: #fff; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 15px;
+    }
+    .item {
+      background: #252525;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #333;
+      text-align: left;
+      transition: background 0.3s ease;
+      position: relative;
+    }
+    .item:hover {
+      background: #2e2e2e;
+    }
+    .item p {
+      margin: 6px 0;
+      font-size: 14px;
+      color: #ddd;
+    }
+    .item b { color: #ffc107; }
+    .position-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ffc107;
+      color: #111;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    footer {
+      text-align: center;
+      color: #888;
+      padding: 10px;
+      font-size: 0.9em;
+    }
+    .btn-group {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .item.new-key {
+      animation: highlight 1.5s ease;
+    }
+    @keyframes highlight {
+      0% { background: #ffc107; transform: scale(1.05); }
+      100% { background: #252525; transform: scale(1); }
+    }
+    .position-selector {
+      display: flex;
+      align-items: center;
+      margin: 8px 6px;
+    }
+    .position-selector label {
+      color: #ffc107;
+      margin-right: 10px;
+      font-weight: 600;
+    }
+    #positionInfo {
+      color: #aaa;
+      font-size: 0.85em;
+      margin-left: 10px;
+    }
+    
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.7);
+      animation: fadeIn 0.3s ease;
+    }
+    .modal-content {
+      background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+      margin: 15% auto;
+      padding: 30px;
+      border: 2px solid #e53935;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(229, 57, 53, 0.5);
+      animation: slideDown 0.3s ease;
+    }
+    .modal-content h2 {
+      color: #e53935;
+      margin-top: 0;
+      font-size: 1.8em;
+    }
+    .modal-content p {
+      color: #ddd;
+      font-size: 1.1em;
+      margin: 20px 0;
+    }
+    .modal-btn {
+      background: #e53935;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1em;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .modal-btn:hover {
+      background: #c62828;
+      transform: scale(1.05);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideDown {
+      from { 
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to { 
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      header { flex-direction: column; text-align: center; }
+      input, select { width: 100%; margin: 8px 0; }
+      .modal-content {
+        width: 90%;
+        margin: 30% auto;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>🔥 NMMS Admin Panel</h1>
+    <div class="admin-info" id="adminInfo" style="display:none;">
+      Logged in as: <span id="adminEmail"></span>
+      <button class="logout-btn" id="logoutBtn">🚪 Logout</button>
+    </div>
+  </header>
 
-<h2>Key.json Admin Panel</h2>
+  <main>
+    <div id="loginSection" class="card" style="text-align:center;">
+      <h3>Admin Login</h3>
+      <p>Sign in securely using your Google account</p>
+      <button id="loginBtn">🔐 Sign in with Google</button>
+    </div>
 
-<p><b>Step 1:</b> Enter Admin Email</p>
-<input id="email" placeholder="Enter admin email">
-<button onclick="verifyAdmin()">Verify</button>
+    <div id="mainPanel" style="display:none;">
+      <div class="card">
+        <h3>➕ Add / Update License Key</h3>
+        <div>
+          <input type="text" id="deviceId" placeholder="Device ID">
+          <input type="text" id="key" placeholder="Key">
+          <input type="text" id="expiry" placeholder="Expiry (dd-mm-yyyy)">
+          <input type="text" id="username" placeholder="User name">
+          <label><input type="checkbox" id="allowOffline"> Allow Offline</label>
+        </div>
+        <div class="position-selector">
+          <label>📍 Insert Position:</label>
+          <select id="insertPosition"></select>
+          <span id="positionInfo"></span>
+        </div>
+        <button id="saveBtn" class="save">💾 Save / Update</button>
+      </div>
 
-<p><b>Step 2:</b> GitHub Login for Editing</p>
-<button onclick="githubLogin()">Sign in to GitHub</button>
+      <div class="card">
+        <h3>📜 Active Keys (Realtime)</h3>
+        <div id="dataList" class="grid"></div>
+      </div>
+    </div>
+  </main>
 
-<p id="status"></p>
+  <!-- Access Denied Modal -->
+  <div id="accessDeniedModal" class="modal">
+    <div class="modal-content">
+      <h2>🚫 Access Denied!</h2>
+      <p>Only authorized admin can access this panel.</p>
+      <p style="font-size: 0.9em; color: #aaa;">Please contact the administrator for access.</p>
+      <button class="modal-btn" onclick="closeModalAndReload()">OK</button>
+    </div>
+  </div>
 
-<div id="panel">
-  <button onclick="loadFile()">Load Key.json</button>
-  <button onclick="saveFile()">Save</button>
-  <input id="commit" placeholder="Commit message" style="width:100%">
-  <textarea id="editor"></textarea>
-  <pre id="result"></pre>
-</div>
+  <footer>© 2025 NMMS Tools | Admin Panel</footer>
 
-<script>
-// ===== ADMIN EMAIL =====
-const ADMIN_EMAIL = "www.webomprakashjat@gmail.com";
+  <!-- Firebase Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+    import { getDatabase, ref, onValue, set, remove, get } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 
-// ===== GITHUB APP CREDENTIALS =====
-const CLIENT_ID = "Ov23liByBWpEww6qNnPy";
+    const firebaseConfig = {
+      apiKey: "AIzaSyA1FIDLD-AKVlEz-AJiweYVdxhIP0Rnijk",
+      authDomain: "opjat-2005.firebaseapp.com",
+      databaseURL: "https://opjat-2005-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "opjat-2005",
+      storageBucket: "opjat-2005.firebasestorage.app",
+      messagingSenderId: "2500552965",
+      appId: "1:2500552965:web:4f6664a366967a2525af6c"
+    };
 
-// ===== REPO DETAILS =====
-const OWNER = "wwwwebomprakashjat-eng";
-const REPO = "Login_pageforactivation";
-const FILE = "Key.json";
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
 
-let accessToken = null;
+    // Multiple admin emails allowed
+    const ADMIN_EMAILS = [
+      "www.webomprakashjat@gmail.com",
+      "rambirma248@gmail.com"
+    ];
 
-/* Step 1: Admin Verify */
-function verifyAdmin(){
-    const e = document.getElementById("email").value.trim();
-    if(e === ADMIN_EMAIL){
-        document.getElementById("status").innerText = "Admin verified!";
-    } else {
-        alert("Not Authorized!");
-    }
-}
+    let currentUpdateId = null;
+    let totalKeys = 0;
 
-/* Step 2: GitHub OAuth Login */
-function githubLogin(){
-    const redirect = "https://wwwwebomprakashjat-eng.github.io/Login_pageforactivation/index.html";
-    window.location.href =
-        `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=repo&redirect_uri=${redirect}`;
-}
+    const loginBtn = document.getElementById("loginBtn");
+    const loginSection = document.getElementById("loginSection");
+    const mainPanel = document.getElementById("mainPanel");
+    const dataList = document.getElementById("dataList");
+    const adminInfo = document.getElementById("adminInfo");
+    const adminEmailSpan = document.getElementById("adminEmail");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const insertPosition = document.getElementById("insertPosition");
+    const positionInfo = document.getElementById("positionInfo");
+    const accessDeniedModal = document.getElementById("accessDeniedModal");
 
-/* Step 3: Token Exchange */
-(async function(){
-    if(window.location.search.includes("code=")){
+    // Global function for modal close
+    window.closeModalAndReload = function() {
+      accessDeniedModal.style.display = "none";
+      location.reload();
+    };
 
-        const code = new URLSearchParams(window.location.search).get("code");
-        document.getElementById("status").innerText = "Exchanging token…";
+    loginBtn.addEventListener("click", async () => {
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
 
-        const res = await fetch(`https://adminpanelpro.choudharydimpaljat.workers.dev/?code=${code}`);
-        const data = await res.json();
+        // Check if user email is in the allowed admin emails list
+        if (!ADMIN_EMAILS.includes(user.email)) {
+          // Show modal instead of alert
+          accessDeniedModal.style.display = "block";
+          
+          // Sign out the unauthorized user
+          await signOut(auth);
+          return;
+        }
 
-        if(data.access_token){
-            accessToken = data.access_token;
-            document.getElementById("status").innerText = "GitHub Login Successful!";
-            document.getElementById("panel").style.display = "block";
-
-            history.replaceState({}, document.title, location.pathname);
+        adminEmailSpan.textContent = user.email;
+        adminInfo.style.display = "block";
+        loginSection.style.display = "none";
+        mainPanel.style.display = "block";
+        loadData();
+      } catch (err) {
+        if (err.code === 'auth/popup-closed-by-user') {
+          console.log("Login popup closed by user");
         } else {
-            document.getElementById("status").innerText = "Token exchange failed!";
+          alert("❌ Login failed: " + err.message);
         }
+      }
+    });
+
+    logoutBtn.addEventListener("click", async () => {
+      await signOut(auth);
+      alert("✅ Logged out successfully!");
+      location.reload();
+    });
+
+    function updatePositionDropdown(keysCount, isUpdate = false) {
+      insertPosition.innerHTML = "";
+      totalKeys = keysCount;
+
+      const maxPosition = isUpdate ? keysCount : keysCount + 1;
+
+      for (let i = 1; i <= maxPosition; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = `${i}${getOrdinalSuffix(i)} Position`;
+        insertPosition.appendChild(option);
+      }
+
+      if (maxPosition >= 3) {
+        insertPosition.value = "3";
+      } else {
+        insertPosition.value = maxPosition;
+      }
+
+      positionInfo.textContent = isUpdate ? `(Total ${keysCount} keys)` : `(Will be ${keysCount + 1} keys after adding)`;
     }
-})();
 
-/* LOAD FILE */
-async function loadFile(){
-    if(!accessToken){
-        return alert("Please sign in to GitHub first.");
+    function getOrdinalSuffix(num) {
+      const j = num % 10;
+      const k = num % 100;
+      if (j === 1 && k !== 11) return "st";
+      if (j === 2 && k !== 12) return "nd";
+      if (j === 3 && k !== 13) return "rd";
+      return "th";
     }
 
-    document.getElementById("status").innerText = "Loading file…";
+    function loadData() {
+      onValue(ref(db, "/"), (snapshot) => {
+        const data = snapshot.val();
+        dataList.innerHTML = "";
 
-    const res = await fetch(
-        `https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE}`,
-        {
-            headers:{ Authorization:"token " + accessToken }
+        if (!data) {
+          dataList.innerHTML = "<p>No keys found.</p>";
+          updatePositionDropdown(0, currentUpdateId !== null);
+          return;
         }
-    );
 
-    const data = await res.json();
+        const sortedKeys = Object.keys(data)
+          .map(id => ({
+            id,
+            ...data[id],
+            order: data[id].order || 999999
+          }))
+          .sort((a, b) => a.order - b.order);
 
-    if(!data.content){
-        document.getElementById("result").innerText = JSON.stringify(data,null,2);
+        updatePositionDropdown(sortedKeys.length, currentUpdateId !== null);
+
+        sortedKeys.forEach((item, index) => {
+          const div = document.createElement("div");
+          div.classList.add("item");
+
+          if (item.isNew) {
+            div.classList.add("new-key");
+          }
+
+          div.innerHTML = `
+            <span class="position-badge">#${index + 1}</span>
+            <p><b>Device:</b> ${item.device_id}</p>
+            <p><b>User:</b> ${item.user}</p>
+            <p><b>Key:</b> ${item.key}</p>
+            <p><b>Expiry:</b> ${item.expirydate}</p>
+            <p><b>Offline:</b> ${item.Allowoffline}</p>
+            <div class="btn-group">
+              <button class="update" onclick="updateItem('${item.id}')">✏️ Update</button>
+              <button class="danger" onclick="deleteItem('${item.id}')">🗑 Delete</button>
+            </div>
+          `;
+          dataList.appendChild(div);
+        });
+      });
+    }
+
+    document.getElementById("saveBtn").addEventListener("click", async () => {
+      const id = document.getElementById("deviceId").value.trim();
+      const key = document.getElementById("key").value.trim();
+      const expiry = document.getElementById("expiry").value.trim();
+      const user = document.getElementById("username").value.trim();
+      const allow = document.getElementById("allowOffline").checked;
+      const insertPos = parseInt(document.getElementById("insertPosition").value);
+
+      if (!id || !key || !expiry || !user) {
+        alert("⚠️ Please fill all fields!");
         return;
-    }
+      }
 
-    const json = atob(data.content.replace(/\n/g,''));
-    window.fileSha = data.sha;
+      try {
+        const isUpdate = currentUpdateId && currentUpdateId === id;
 
-    document.getElementById("editor").value = JSON.stringify(JSON.parse(json), null, 2);
-    document.getElementById("status").innerText = "File Loaded!";
-}
+        if (isUpdate) {
+          const snapshot = await get(ref(db, id));
+          const existingData = snapshot.val();
 
-/* SAVE FILE */
-async function saveFile(){
-    if(!accessToken){
-        return alert("Please sign in to GitHub first.");
-    }
+          await set(ref(db, id), {
+            device_id: id,
+            key: key,
+            expirydate: expiry,
+            user: user,
+            Allowoffline: allow,
+            order: existingData?.order || 999999,
+            isNew: false
+          });
 
-    let content = document.getElementById("editor").value;
-    const msg = document.getElementById("commit").value || "Update Key.json";
+          alert("✅ Updated Successfully!");
+          currentUpdateId = null;
+        } else {
+          const snapshot = await get(ref(db, "/"));
+          const allData = snapshot.val() || {};
 
-    try{
-        JSON.parse(content);
-    }catch(e){
-        alert("Invalid JSON");
-        return;
-    }
+          const sortedItems = Object.keys(allData)
+            .map(itemId => ({
+              id: itemId,
+              ...allData[itemId],
+              order: allData[itemId].order || 999999
+            }))
+            .sort((a, b) => a.order - b.order);
 
-    const encoded = btoa(content);
+          const targetIndex = insertPos - 1;
 
-    const res = await fetch(
-        `https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE}`,
-        {
-            method:"PUT",
-            headers:{
-                Authorization:"token " + accessToken,
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify({
-                message:msg,
-                content:encoded,
-                sha:window.fileSha
-            })
+          sortedItems.splice(targetIndex, 0, {
+            id: id,
+            device_id: id,
+            key: key,
+            expirydate: expiry,
+            user: user,
+            Allowoffline: allow,
+            isNew: true,
+            order: 0
+          });
+
+          for (let i = 0; i < sortedItems.length; i++) {
+            const item = sortedItems[i];
+            await set(ref(db, item.id), {
+              device_id: item.device_id,
+              key: item.key,
+              expirydate: item.expirydate,
+              user: item.user,
+              Allowoffline: item.Allowoffline,
+              order: i + 1,
+              isNew: item.id === id ? true : false
+            });
+          }
+
+          setTimeout(async () => {
+            const currentSnapshot = await get(ref(db, id));
+            if (currentSnapshot.exists()) {
+              const currentData = currentSnapshot.val();
+              await set(ref(db, id), {
+                ...currentData,
+                isNew: false
+              });
+            }
+          }, 3000);
+
+          alert(`✅ New Key Added at Position #${insertPos}!`);
         }
-    );
 
-    const data = await res.json();
-    document.getElementById("result").innerText = JSON.stringify(data,null,2);
-    document.getElementById("status").innerText = "Saved!";
-}
-</script>
+        document.getElementById("deviceId").value = "";
+        document.getElementById("key").value = "";
+        document.getElementById("expiry").value = "";
+        document.getElementById("username").value = "";
+        document.getElementById("allowOffline").checked = false;
+
+      } catch (error) {
+        console.error("Error saving data:", error);
+        alert("❌ Error: " + error.message);
+      }
+    });
+
+    window.deleteItem = async (id) => {
+      if (confirm("Delete this key?")) {
+        try {
+          await remove(ref(db, id));
+
+          const snapshot = await get(ref(db, "/"));
+          const allData = snapshot.val() || {};
+
+          const sortedItems = Object.keys(allData)
+            .map(itemId => ({
+              id: itemId,
+              ...allData[itemId]
+            }))
+            .sort((a, b) => (a.order || 999999) - (b.order || 999999));
+
+          for (let i = 0; i < sortedItems.length; i++) {
+            const item = sortedItems[i];
+            await set(ref(db, item.id), {
+              device_id: item.device_id,
+              key: item.key,
+              expirydate: item.expirydate,
+              user: item.user,
+              Allowoffline: item.Allowoffline,
+              order: i + 1,
+              isNew: false
+            });
+          }
+
+          alert("🗑 Deleted successfully!");
+        } catch (error) {
+          console.error("Error deleting:", error);
+          alert("❌ Error: " + error.message);
+        }
+      }
+    };
+
+    window.updateItem = async (id) => {
+      currentUpdateId = id;
+      const dbRef = ref(db, id);
+
+      try {
+        const snapshot = await get(dbRef);
+        const item = snapshot.val();
+
+        if (item) {
+          document.getElementById("deviceId").value = item.device_id;
+          document.getElementById("key").value = item.key;
+          document.getElementById("expiry").value = item.expirydate;
+          document.getElementById("username").value = item.user;
+          document.getElementById("allowOffline").checked = item.Allowoffline;
+
+          const allSnapshot = await get(ref(db, "/"));
+          const allData = allSnapshot.val() || {};
+          updatePositionDropdown(Object.keys(allData).length, true);
+
+          window.scrollTo(0, 0);
+        }
+      } catch (error) {
+        console.error("Error loading item:", error);
+        alert("❌ Error: " + error.message);
+      }
+    };
+  </script>
 </body>
 </html>
